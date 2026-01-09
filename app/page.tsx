@@ -1,4 +1,4 @@
-import { Hero } from "@/components/home/hero"
+import { HeroV2 } from "@/components/home/hero-v2"
 import { FeaturedProducts } from "@/components/home/featured-products"
 import { Values } from "@/components/home/values"
 import { Newsletter } from "@/components/home/newsletter"
@@ -6,8 +6,8 @@ import { Footer } from "@/components/footer"
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
-      <Hero />
+    <main className="bg-charcoal">
+      <HeroV2 />
       <FeaturedProducts />
       <Values />
       <Newsletter />

@@ -231,9 +231,9 @@ export function HeroV2() {
             {/* Feature 1 - Premium Substrate */}
             <motion.div
               style={{ opacity: feature1Opacity, y: feature1Y }}
-              className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 pointer-events-none z-20"
+              className="absolute inset-0 flex flex-col items-center md:items-start justify-start md:justify-center pt-24 md:pt-0 px-6 md:px-16 pointer-events-none z-20"
             >
-              <div className="max-w-xl">
+              <div className="max-w-xl text-center md:text-left">
                 <span className="text-xs tracking-[0.3em] text-mushroom-orange uppercase">
                   01 — Premium Substrate
                 </span>
@@ -244,13 +244,13 @@ export function HeroV2() {
                   <span className="text-cream/60">enriched with nutrients</span>
                 </h2>
                 
-                <p className="mt-6 max-w-md text-base md:text-lg text-cream/50 leading-relaxed">
+                <p className="mt-6 max-w-md mx-auto md:mx-0 text-base md:text-lg text-cream/50 leading-relaxed">
                   Our substrate blend combines sustainably sourced oak sawdust 
                   with wheat bran and gypsum — the perfect foundation for 
                   thriving mycelium networks.
                 </p>
 
-                <div className="mt-8 flex gap-8">
+                <div className="mt-8 flex justify-center md:justify-start gap-8">
                   <div className="flex flex-col">
                     <span className="text-3xl font-bold text-mushroom-orange">100%</span>
                     <span className="text-xs tracking-wide text-cream/40 uppercase">Organic</span>
@@ -266,9 +266,9 @@ export function HeroV2() {
             {/* Stats Section */}
             <motion.div
               style={{ opacity: statsOpacity, y: statsY }}
-              className="absolute inset-0 flex items-center justify-center pointer-events-none z-20"
+              className="absolute inset-x-0 top-0 flex items-start justify-center pt-24 md:pt-32 pointer-events-none z-20"
             >
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 text-center">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-16 text-center bg-charcoal/60 backdrop-blur-sm px-8 py-6 rounded-2xl">
                 <div>
                   <div className="text-4xl md:text-6xl font-bold text-mushroom-orange">10</div>
                   <div className="mt-2 text-xs tracking-widest text-cream/40 uppercase">Days to Harvest</div>
@@ -291,9 +291,9 @@ export function HeroV2() {
             {/* Feature 2 - Ready to Grow */}
             <motion.div
               style={{ opacity: feature2Opacity, y: feature2Y }}
-              className="absolute inset-0 flex flex-col items-end justify-center px-6 md:px-16 pointer-events-none z-20"
+              className="absolute inset-0 flex flex-col items-center md:items-end justify-start md:justify-center pt-24 md:pt-0 px-6 md:px-16 pointer-events-none z-20"
             >
-              <div className="max-w-xl text-right">
+              <div className="max-w-xl text-center md:text-right">
                 <span className="text-xs tracking-[0.3em] text-olive uppercase">
                   02 — Ready to Grow
                 </span>
@@ -304,18 +304,18 @@ export function HeroV2() {
                   <span className="text-cream/60">watch them flourish</span>
                 </h2>
                 
-                <p className="mt-6 ml-auto max-w-md text-base md:text-lg text-cream/50 leading-relaxed">
+                <p className="mt-6 mx-auto md:ml-auto md:mr-0 max-w-md text-base md:text-lg text-cream/50 leading-relaxed">
                   Pre-colonized with White, Grey, and Brown Oyster varieties. 
                   Simply cut the bag, mist twice daily, and harvest your first 
                   flush in 7-10 days.
                 </p>
 
-                <div className="mt-8 flex justify-end gap-8">
-                  <div className="flex flex-col items-end">
+                <div className="mt-8 flex justify-center md:justify-end gap-8">
+                  <div className="flex flex-col items-center md:items-end">
                     <span className="text-3xl font-bold text-cream">7-10</span>
                     <span className="text-xs tracking-wide text-cream/40 uppercase">Days</span>
                   </div>
-                  <div className="flex flex-col items-end">
+                  <div className="flex flex-col items-center md:items-end">
                     <span className="text-3xl font-bold text-mushroom-orange">2x</span>
                     <span className="text-xs tracking-wide text-cream/40 uppercase">Daily Misting</span>
                   </div>
@@ -326,9 +326,9 @@ export function HeroV2() {
             {/* CTA Section */}
             <motion.div
               style={{ opacity: ctaOpacity, y: ctaY }}
-              className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-16 pointer-events-none z-20"
+              className="absolute inset-0 flex flex-col items-center md:items-start justify-start md:justify-center pt-24 md:pt-0 px-6 md:px-16 pointer-events-none z-20"
             >
-              <div className="text-center max-w-2xl">
+              <div className="text-center md:text-left max-w-2xl">
                 <span className="text-xs tracking-[0.3em] text-mushroom-orange uppercase">
                   Harvest Happiness
                 </span>
@@ -338,12 +338,12 @@ export function HeroV2() {
                   <span className="block text-gradient">journey today</span>
                 </h2>
                 
-                <p className="mt-6 max-w-lg mx-auto text-base md:text-lg text-cream/50">
+                <p className="mt-6 max-w-lg text-base md:text-lg text-cream/50">
                   Each kit includes detailed growing instructions, a humidity tent, 
                   and our grower's support line. Fresh, gourmet mushrooms — grown by you.
                 </p>
 
-                <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4 pointer-events-auto">
+                <div className="mt-10 flex flex-col sm:flex-row justify-center md:justify-start gap-4 pointer-events-auto">
                   <Button
                     asChild
                     size="lg"
@@ -364,7 +364,7 @@ export function HeroV2() {
                   </Button>
                 </div>
 
-                <div className="mt-12 flex justify-center gap-8 text-xs text-cream/30">
+                <div className="mt-12 flex justify-center md:justify-start gap-8 text-xs text-cream/30">
                   <span className="flex items-center gap-2">
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
