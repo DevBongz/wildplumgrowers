@@ -1,17 +1,52 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useCart } from "@/contexts/cart-context"
-import { Minus, Plus, Trash2, ShoppingBag, ArrowRight } from "lucide-react"
+import { Minus, Plus, Trash2, ShoppingBag, ArrowRight, Loader2 } from "lucide-react"
 import { Footer } from "@/components/footer"
 
 export default function CartPage() {
   const { items, updateQuantity, removeItem, subtotal, totalItems } = useCart()
+  const [isCheckingOut, setIsCheckingOut] = useState(false)
+  const [checkoutError, setCheckoutError] = useState<string | null>(null)
 
-  const shipping = subtotal >= 75 ? 0 : 10
+  const handleCheckout = async () => {
+    setIsCheckingOut(true)
+    setCheckoutError(null)
+
+    try {
+      // Use direct URL method to bypass Storefront API cart authentication issues
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ items, useDirectUrl: true }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Checkout failed')
+      }
+
+      // Redirect to Shopify checkout
+      window.location.href = data.checkoutUrl
+    } catch (error) {
+      console.error('Checkout error:', error)
+      setCheckoutError(error instanceof Error ? error.message : 'Checkout failed. Please try again.')
+      setIsCheckingOut(false)
+    }
+  }
+
+  const shipping = subtotal >= 500 ? 0 : 75 // Free shipping over R500
   const total = subtotal + shipping
+
+  // Format price for ZAR
+  const formatPrice = (price: number) => `R ${price.toFixed(0)}`
 
   if (items.length === 0) {
     return (
@@ -86,7 +121,7 @@ export default function CartPage() {
                       </div>
 
                       <div className="flex items-center gap-4">
-                        <span className="text-lg font-bold text-cream">${(item.price * item.quantity).toFixed(2)}</span>
+                        <span className="text-lg font-bold text-cream">{formatPrice(item.price * item.quantity)}</span>
                         <button
                           onClick={() => removeItem(item.id)}
                           className="text-cream/60 hover:text-destructive transition-colors"
@@ -109,26 +144,39 @@ export default function CartPage() {
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between text-cream/80">
                     <span>Subtotal</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span>{formatPrice(subtotal)}</span>
                   </div>
                   <div className="flex justify-between text-cream/80">
                     <span>Shipping</span>
-                    <span>{shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`}</span>
+                    <span>{shipping === 0 ? "FREE" : formatPrice(shipping)}</span>
                   </div>
-                  {subtotal < 75 && shipping > 0 && (
-                    <p className="text-xs text-olive">Add ${(75 - subtotal).toFixed(2)} more for free shipping!</p>
+                  {subtotal < 500 && shipping > 0 && (
+                    <p className="text-xs text-olive">Add {formatPrice(500 - subtotal)} more for free shipping!</p>
                   )}
                   <div className="pt-3 border-t border-cream/10 flex justify-between text-lg font-bold text-cream">
                     <span>Total</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span>{formatPrice(total)}</span>
                   </div>
                 </div>
 
+                {checkoutError && (
+                  <p className="text-red-400 text-sm mb-3">{checkoutError}</p>
+                )}
+
                 <Button
                   size="lg"
-                  className="w-full bg-mushroom-orange hover:bg-mushroom-orange/90 text-charcoal font-semibold rounded-full mb-3"
+                  onClick={handleCheckout}
+                  disabled={isCheckingOut}
+                  className="w-full bg-mushroom-orange hover:bg-mushroom-orange/90 text-charcoal font-semibold rounded-full mb-3 disabled:opacity-50"
                 >
-                  Proceed to Checkout
+                  {isCheckingOut ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Creating Checkout...
+                    </>
+                  ) : (
+                    'Proceed to Checkout'
+                  )}
                 </Button>
 
                 <Button
@@ -144,7 +192,7 @@ export default function CartPage() {
                 <div className="mt-6 pt-6 border-t border-cream/10 space-y-2">
                   <div className="flex items-center gap-2 text-xs text-cream/60">
                     <div className="w-1.5 h-1.5 rounded-full bg-olive" />
-                    <span>Secure checkout</span>
+                    <span>Secure Shopify checkout</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-cream/60">
                     <div className="w-1.5 h-1.5 rounded-full bg-olive" />
@@ -152,7 +200,7 @@ export default function CartPage() {
                   </div>
                   <div className="flex items-center gap-2 text-xs text-cream/60">
                     <div className="w-1.5 h-1.5 rounded-full bg-olive" />
-                    <span>Free shipping over $75</span>
+                    <span>Free shipping over R500</span>
                   </div>
                 </div>
               </div>
