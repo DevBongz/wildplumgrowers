@@ -1,0 +1,10 @@
+# Wild Plum Growers — Quote #10002 scope (table only)
+
+**Total quoted:** R54,800.00 · **CODE RIFFS** · dated 2026/03/18
+
+| # | Quoted item | Amount | What you get (deliverables) | What the work entails |
+|---|-------------|--------|----------------------------|------------------------|
+| 1 | **Website Development** | R25,000.00 | A full public website: home, story, contact, link into the shop, shared header and footer, mobile-friendly layout, go-live to the live web address, and basic testing before launch. | Planning the page structure and look for Wild Plum; building the site; styling to match your brand; contact forms that work; fast-loading images and pages; a simple path from test site to live site. |
+| 2 | **CMS Integration** | R8,500.00 | You can update agreed pages yourself—text and images—without needing a developer for every small change. Products still come from Shopify where that applies. | Setting up the content system, wiring it to the site, light guidance on how to edit, and keeping product information and marketing copy consistent. |
+| 3 | **SEO & Marketing Kit (incl. ad campaigns)** | R8,300.00 | **Search:** titles and descriptions, basics so Google can find you, plus Search Console help. **Analytics:** Google Analytics so you can see visitors and sales-related activity. **Ads:** Google Ads set up with campaigns and draft copy; **you pay Google for clicks**—that spend is not this fee. **Tracking:** purchases (and other key actions) counted correctly in Analytics and Ads, tested before launch. Simple link-tagging so reports stay clear. | Keyword and page planning with you; install and test everything above; a short session so you know where to click in Analytics and Ads. |
+| 4 | **Ecommerce Development** | R13,000.00 | Customers can browse products, see details, use a cart, and pay safely through Shopify checkout, with orders flowing the usual Shopify way. | Product setup in Shopify (options, prices, variants), cart and checkout behaviour, shipping rules as agreed, and fixes for issues covered by your contract after launch. |
